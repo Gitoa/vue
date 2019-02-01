@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>Render List</title>
+    </head>
+    <body>
+        <div id='app'>
+            <ele :list="list"></ele>
+            <button @click="handleClick">显示列表</button>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('ele', {
+                props: {
+                    list: {
+                        type: Array,
+                        default: function(){
+                            return []
+                        }
+                    }
+                },
+                render: function(createElement){
+                    if(this.list.length){
+                        return createElement('ul', this.list.map(function(item){
+                            return createElement('li', item);
+                        }));
+                    }else{
+                        return createElement('p', '列表为空');
+                    }
+                },
+                props: {
+                    list: {
+                        type: Array,
+                        default: function(){
+                            return [];
+                        }
+                    }
+                }
+            });
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    list: []
+                },
+                methods: {
+                    handleClick: function(){
+                        this.list = [
+                            '<<VUe.js实战>>',
+                            '<<JavaScript高级程序设计>>',
+                            '<<JavaScript语言精粹>>'
+                        ]
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

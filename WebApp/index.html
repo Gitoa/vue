@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <title>调查问卷</title>
+        <meta charset='utf-8'>
+        <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+        <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+        <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div id='app' v-cloak>
+            <pages :current-page="currentPage">     
+            </pages>
+        </div>
+        <Icon type="ios-add" size="24"></Icon>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script src="pageButton.js"></script>
+        <script src="page.js"></script>
+        <script src="pages.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    currentPage: 0
+                }
+            })
+        </script> 
+    </body>
+</html>

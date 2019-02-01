@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>自定义指令示例</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div id='app'>
+            <div v-clickoutside = "handleClose" class="main">
+                <button @click="show = !show">点击显示下拉菜单</button>
+                <div class="dropdown" v-show="show">
+                    <p>下拉框，单击区域以外关闭</p>
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script src="clickoutside.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

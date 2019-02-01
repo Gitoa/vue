@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>js_in_render</title>
+    </head>
+    <body>
+        <div id='app'>
+            <ele :show="show" @trueonclick='handleClick'></ele>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('ele', {
+                render: function(createElement){
+                    console.log(this.show);
+                    if(this.show){
+                        return createElement('p', {
+                                on: {
+                                    click: this.clickOnTrue
+                                    }
+                                },
+                            'show的值为true');
+                    }else{
+                        return createElement('p', 'show的值为false');
+                    }
+                },
+                props: {
+                    show: {
+                        type: Boolean,
+                        default: false
+                    }
+                },
+                methods: {
+                    clickOnTrue: function(){
+                        this.$emit('trueonclick', this.show);
+                        console.log('here');
+                    }
+                }
+            });
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    show: true
+                },
+                methods: {
+                    handleClick: function(show){
+                        console.log('there');
+                        this.show = !this.show;
+                        console.log(this.show);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

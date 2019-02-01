@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <title>标签页组件</title>
+        <meta charset='utf-8'>
+        <link type='text/css' rel='stylesheet' href='style.css'>
+    </head>
+    <body>
+        <div id='app'>
+            <tabs v-model="activeKey">
+                <pane name="1" label="标签一">标签一的内容</pane>
+                <pane name="2" label="标签二">标签二的内容</pane>
+                <pane name="3" label="标签三">标签三的内容</pane>
+            </tabs>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script src="pane.js"></script>
+        <script src="tabs.js"></script>
+        <script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    activeKey: '1'
+                }
+            })
+        </script>
+    </body>
+</html>

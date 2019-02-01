@@ -1,0 +1,8 @@
+* {box-sizing: border-box;}
+body, div {margin:0; padding:0;}
+.ivu-col {height: auto; color:#ffffff; float:left; overflow:hidden; margin:0; padding:0; position:relative;}
+.ivu-col:nth-child(odd) div{background: #aaa2bb;}
+.ivu-col div{background: #aa1122; text-align:center;}
+.ivu-col-span-12 {width: 50%;}
+.ivu-col-span-2 {width: 8%;}
+.ivu-col-span-10 {width: 42%;}

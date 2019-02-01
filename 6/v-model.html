@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>v-model</title>
+        <style>
+            [v-cloak] {display: none}
+        </style>
+    </head>
+    <body>
+        <div id='app' v-cloak>
+            <input type='text' v-model='message' placeholder='输入...'>
+            <p>输入内容是:{{ message }}</p>
+            <textarea v-model='text' placeholder='输入...'>testtest</textarea>
+            <p>输入的内容是:</p>
+            <p style='white-space: pre'>{{ text }}</p>
+            <input type='radio' :checked='picked' @click='buttonPicked'>
+            <label>单选按钮</label>
+            <input type='checkbox' v-model='checked' value='html' id='html'>
+            <label for='html'>HTML</label>
+            <input type='checkbox' v-model='checked' value='js' id='js'>
+            <label for='js'>JS</label>
+            <input type='checkbox' v-model='checked' value='css' id='css'>
+            <label for='css'>CSS</label>
+            <p>{{ checked }}</p>
+
+            <select v-model='selected' multiple>
+                <option>html</option>
+                <option value='js'>JavaScript</option>
+                <option>css</option>
+            </select>
+            <p>选择的项是:{{ selected }}</p>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: '',
+                    text: '',
+                    picked: true,
+                    checked: [],
+                    selected: ['html', 'js']
+                },
+                methods: {
+                    buttonPicked: function(){
+                        this.picked = !this.picked;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

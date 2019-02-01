@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>different between methods and computed</title>
+    </head>
+    <body>
+        <div id='app'>
+            {{ date() }}
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                methods: {
+                    date: function(){
+                        return Date.now();
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

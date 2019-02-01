@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>V-FOR</title>
+    </head>
+    <body>
+        <div id='app'>
+            <ele :list="list"></ele>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            Vue.component('ele', {
+                render: function(createElement){
+                    var nodes=[];
+                    for(var i=0; i<this.list.length; i++){
+                        nodes.push(createElement('p', this.list[i]));
+                    }
+                    return createElement('div', nodes);
+                },
+                props: {
+                    list: {
+                        type: Array
+                    }
+                }
+            });
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    list: [
+                        '<<Vue.js实战>>',
+                        '<<JavaScript高级程序设计>>',
+                        '<<JavaScript语言精粹>>'
+                    ]
+                }
+            })
+        </script>
+    </body>
+</html>

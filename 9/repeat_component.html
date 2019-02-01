@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>重复使用组件</title>
+    </head>
+    <div id='app'>
+        <ele></ele>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var Child = {
+            props: {
+                text: {},
+            },
+            render: function(createElement){
+                return createElement('p', this.text);
+            }
+        };
+        Vue.component('ele', {
+            data() {
+                return {
+                    text: 'test',
+                }
+            },
+            render: function(createElement){
+                var childNode = createElement(Child, {
+                    props: {text: this.text },
+                    nativeOn: {
+                        click: () => {
+                            this.text = 'clicked' + new Date();
+                        },
+                    },
+                });
+                return createElement('div', [
+                    childNode,
+                    childNode
+                ] )
+            }
+        });
+        var app = new Vue({
+            el: '#app'
+        })
+    </script>
+</html>

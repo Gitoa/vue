@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>列表</title>
+        <link rel='stylesheet' type='text/css' href='style.css'>
+    </head>
+    <body>
+        <div id='app' v-cloak>
+            <v-table :data="data" :columns="columns"></v-table>
+            <button @click="handleAddData">添加数据</button>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script src="table.js"></script>
+        <script src="index.js"></script>
+    </body>
+</html>

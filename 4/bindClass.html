@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>class</title>
+    </head>
+    <body>
+        <div id='app'>
+            <div class="static" :class="{ active: isActive, 'error': isError }"></div>
+            <div :class="[activeCls, errorCls]"></div>
+            <div :class="classes"></div>
+        </div>
+        <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    isActive: true,
+                    isError: true,
+                    activeCls: 'active',
+                    errorCls: 'error',
+                    error: null
+                },
+                computed: {
+                    classes: function(){
+                        return {
+                            active: this.isActive && !this.error,
+                            'text-fail': this.error && this.error.type === 'fail'
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>

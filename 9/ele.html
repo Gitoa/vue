@@ -1,0 +1,57 @@
+<div id='app'>
+    <ele></ele>
+</div>
+<script>
+    Vue.component('ele', {
+        template: '\
+        <div id="element"> \
+        :class="{show: show}" \
+        @click="handleClick">文本内容</div>',
+        data: function(){
+            return{
+                show: true
+            }
+        },
+        methods: {
+            handleClick: function(){
+                console.log('clicked!');
+            }
+        }
+    });
+    var app = new Vue({
+        el: '#app'
+    })
+</script>
+
+<!--render 改写-->
+<script>
+    Vue.component('ele', {
+        render: function(createElement){
+            return createElement(
+                'div',
+                {
+                    attrs: {
+                        id: 'element'
+                    },
+                    'class': {
+                        show: this.show
+                    },
+                    on: {
+                        click: this.handleClick
+                    }
+                },
+                '文本内容'
+            )
+        },
+        data: function(){
+            return {
+                show: true
+            }
+        },
+        methods: {
+            handleClick: function(){
+                console.log('clicked!')
+            }
+        }
+    })
+</script>

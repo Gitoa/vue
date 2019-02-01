@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>指令与事件</title>
+    </head>
+    <body>
+        <div id='app'>
+            <a v-bind:href="url">链接</a>
+            <img v-bind:src="imgUrl">
+            <p v-if='show'>这是一段文本</p>
+            <button v-on:click="handleClose">点击{{ action }}</button>
+        </div>
+    </body>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        var action1 = '隐藏';
+        var action2 = '显示';
+        var app = new Vue({
+            el: '#app',
+            data: {
+                url: 'https://www.github.com',
+                imgUrl: 'https://xxx.xxx.xx/img.png',
+                show: true,
+                action: '隐藏'
+            },
+            methods: {
+                handleClose: function(){
+                    this.show = !this.show;
+                    if(this.show){
+                        this.action = action1;
+                    }else{
+                        this.action=action2;
+                    }
+                }
+            }
+        })
+    </script>
+</html>
